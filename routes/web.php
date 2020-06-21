@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//create auth and home page by install laravel ui and db migrate
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/about','PageController@about');;
