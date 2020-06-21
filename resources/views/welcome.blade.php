@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        /*
         <style>
             html, body {
                 background-color: #fff;
@@ -62,6 +63,7 @@
                 margin-bottom: 30px;
             }
         </style>
+         */ 
     </head>
     <body>
         <div class="flex-center position-ref full-height">
