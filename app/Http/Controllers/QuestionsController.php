@@ -27,6 +27,7 @@ class QuestionsController extends Controller
     public function create()
     {
         //
+        return view('questions.create'); //questions is the folder, and create is the file name of blade php
     }
 
     /**
