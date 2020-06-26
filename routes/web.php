@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+}) ->name('index');
 
 //create auth and home page by install laravel ui and db migrate
 Auth::routes();
