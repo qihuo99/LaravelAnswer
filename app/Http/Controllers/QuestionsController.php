@@ -43,11 +43,19 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         //validate the form date, and make this field required and set up max length to 255 varchar
-        $this->validate($request, ['title' => 'required\max:255']);
+        $this->validate($request, ['title'=>'required|max:255']);
         
         $question = new Question();
         $question->title = $request->title;
         $question->description = $request->description;
+
+        //if insert is successful then we want to redirect to view to show to the user
+        if ($question->save()){
+            return redirect()->route('questions.show', $question->id);
+        }
+        else {
+            return redirect()->route('questions.create');
+        }
     }
 
     /**
@@ -59,7 +67,14 @@ class QuestionsController extends Controller
      */
     public function show($id)
     {
-        //
+        //use the model to get 1 record from the database
+
+        //show the view and pass the record to the view
+        $question = Question::findOrFail($id); //In case the id is not found
+
+        //return the view with some info, first parameter is the name of the data
+        //we want to refer to. Second parameter is the actual data we want to pass into
+        return view('questions.show')->with('question', $question); 
     }
 
     /**
@@ -72,6 +87,7 @@ class QuestionsController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
