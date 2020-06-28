@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
 use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
@@ -41,7 +42,12 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate the form date, and make this field required and set up max length to 255 varchar
+        $this->validate($request, ['title' => 'required\max:255']);
+        
+        $question = new Question();
+        $question->title = $request->title;
+        $question->description = $request->description;
     }
 
     /**
