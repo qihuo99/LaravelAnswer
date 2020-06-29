@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Question;
 use Illuminate\Http\Request;
 
+use function GuzzleHttp\Promise\all;
+
 class QuestionsController extends Controller
 {
     /**
@@ -16,7 +18,12 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        //
+        //go to the model and get a group of records
+
+        //return the view, and pass in the group of records to loop through
+        $questions = Question::all();  //retrieve all records
+
+        return view('questions.index')->with('questions', $questions);
     }
 
     /**
