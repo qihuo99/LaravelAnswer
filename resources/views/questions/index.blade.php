@@ -17,5 +17,6 @@
                     <hr />
                 @endforeach
 
+                {!! $questions->links() !!}  {{-- this is for adding pagination function --}}
             </div>
 @endsection

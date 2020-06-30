@@ -21,7 +21,10 @@ class QuestionsController extends Controller
         //go to the model and get a group of records
 
         //return the view, and pass in the group of records to loop through
-        $questions = Question::all();  //retrieve all records
+        //$questions = Question::all();  //retrieve all records
+
+        //Order by will display the latest questions first
+        $questions = Question::orderBy('id', 'desc')->paginate(3);  //retrieve records in paginations format, 3 per page.
 
         return view('questions.index')->with('questions', $questions);
     }
