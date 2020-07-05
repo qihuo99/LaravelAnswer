@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Question;
 use Illuminate\Http\Request;
+use App\Question;
 
-use function GuzzleHttp\Promise\all;
-
-class QuestionsController extends Controller
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * Will show all the questions that user submits
-     * it works like a home page for questions
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,30 +27,27 @@ class QuestionsController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * will show a form for submitting a new question
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
-        return view('questions.create'); //questions is the folder, and create is the file name of blade php
+        //questions is the folder, and create is the file name of blade php
+        return view('questions.create'); 
     }
 
     /**
      * Store a newly created resource in storage.
-     * Once a user submit a new questions, it will 
-     * be send here. Get ready to put into the db
-     * Storage, here means database
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+
         //validate the form date, and make this field required and set up max length to 255 varchar
         $this->validate($request, ['title'=>'required|max:255']);
-        
+    
         $question = new Question();
         $question->title = $request->title;
         $question->description = $request->description;
@@ -70,7 +63,6 @@ class QuestionsController extends Controller
 
     /**
      * Display the specified resource.
-     * view a single/particular question
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -89,7 +81,6 @@ class QuestionsController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * This is just an edit form.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -97,12 +88,10 @@ class QuestionsController extends Controller
     public function edit($id)
     {
         //
-
     }
 
     /**
      * Update the specified resource in storage.
-     * Once the edit form is submitted, it will come here for update.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -115,7 +104,6 @@ class QuestionsController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * Delete a question from the database
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

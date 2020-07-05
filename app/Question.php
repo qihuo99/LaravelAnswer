@@ -15,4 +15,15 @@ class Question extends Model
     //by default it will also look for timestamp fields - created_at and updated_at
 
     //protected $table = 'user_questions'; in case you want to specify a different table name here
+
+    //here we want to define relationship between question and answers
+    //here we want to reference to answers
+    public function answers()
+    {
+        //define relationship between answers and questions
+        //one question has multiple answers
+        //so we have to specify the name of answer model
+        return $this->hasMany('App\Answer'); //this is one->many relationship
+    }
+
 }
